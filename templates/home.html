@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-xl overflow-hidden mb-16">
+        <div class="px-6 py-12 md:px-12 text-center md:text-left md:flex md:items-center">
+            <div class="md:w-1/2 md:pr-10">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                    Organize & Collaborate On Tasks Seamlessly
+                </h1>
+                <p class="mt-4 text-lg text-indigo-100">
+                    Streamline your workflow and boost team productivity with our intuitive task management platform
+                </p>
+                <div class="mt-8">
+                    <div class="auth-only hidden">
+                        <a href="/workspaces" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-sm mr-4">
+                            My Workspaces
+                        </a>
+                        <a href="/workspaces/create" class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-indigo-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                            New Workspace
+                        </a>
+                    </div>
+                    <div class="non-auth-only">
+                        <p class="text-indigo-100 mb-4">Sign in to start organizing your tasks</p>
+                        <button onclick="openLoginModal()" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-sm">
+                            Get Started
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="hidden md:block md:w-1/2">
+                <img src="/api/placeholder/600/400" alt="Task management illustration" class="rounded-lg shadow-2xl" />
+            </div> -->
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
+            Powerful Task Management Made Simple
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="p-6">
+                    <div class="bg-indigo-100 text-indigo-700 inline-flex items-center justify-center p-3 rounded-full mb-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Organize With Workspaces</h3>
+                    <p class="text-gray-600">
+                        Create dedicated workspaces for different projects and keep all your tasks neatly organized in one place.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="p-6">
+                    <div class="bg-purple-100 text-purple-700 inline-flex items-center justify-center p-3 rounded-full mb-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Team Collaboration</h3>
+                    <p class="text-gray-600">
+                        Invite team members to your workspaces, assign tasks, and track progress together efficiently.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="p-6">
+                    <div class="bg-green-100 text-green-700 inline-flex items-center justify-center p-3 rounded-full mb-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Track Progress</h3>
+                    <p class="text-gray-600">
+                        Set deadlines, monitor task statuses, and celebrate completed projects with comprehensive tracking.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-16">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">
+                    How FlowTask Works
+                </h2>
+                
+                <div class="space-y-12">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 text-indigo-700">
+                                <span class="text-2xl font-bold">1</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-medium text-gray-900 mb-2">Create a Workspace</h3>
+                            <p class="text-gray-600">
+                                Start by creating a dedicated workspace for your project. Give it a descriptive name to help your team identify it easily.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 text-indigo-700">
+                                <span class="text-2xl font-bold">2</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-medium text-gray-900 mb-2">Invite Team Members</h3>
+                            <p class="text-gray-600">
+                                Add team members to collaborate on your workspace. Each member will have access to view and manage tasks within the workspace.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 text-indigo-700">
+                                <span class="text-2xl font-bold">3</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-medium text-gray-900 mb-2">Create & Assign Tasks</h3>
+                            <p class="text-gray-600">
+                                Add tasks to your workspace, set deadlines, and assign them to team members. You can include detailed descriptions to clarify requirements.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-100 text-indigo-700">
+                                <span class="text-2xl font-bold">4</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-medium text-gray-900 mb-2">Track & Complete</h3>
+                            <p class="text-gray-600">
+                                Monitor progress, update task statuses, and mark tasks as complete. Keep everyone on the same page with real-time updates.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="mb-16">
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-500 rounded-xl shadow-xl overflow-hidden">
+            <div class="px-6 py-12 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Ready to streamline your task management?
+                </h2>
+                <p class="text-lg text-indigo-100 mb-8 max-w-3xl mx-auto">
+                    Join thousands of teams who use FlowTask to organize their projects and boost productivity.
+                </p>
+                <div class="auth-only hidden">
+                    <a href="/workspaces" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-sm">
+                        Go to My Workspaces
+                    </a>
+                </div>
+                <div class="non-auth-only">
+                    <button onclick="openLoginModal()" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-sm">
+                        Get Started Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function check_is_user_logged_in() {
+            const isAuthenticated = window.localStorage.getItem('user') !== null;
+            
+            const authElements = document.querySelectorAll('.auth-only');
+            const nonAuthElements = document.querySelectorAll('.non-auth-only');
+            
+            if (isAuthenticated) {
+                authElements.forEach(el => el.classList.remove('hidden'));
+                nonAuthElements.forEach(el => el.classList.add('hidden'));
+            } else {
+                authElements.forEach(el => el.classList.add('hidden'));
+                nonAuthElements.forEach(el => el.classList.remove('hidden'));
+            }
+        }
+        
+        check_is_user_logged_in();
+        
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'user') {
+                check_is_user_logged_in();
+            }
+        });
+    });
+</script>
+{% endblock %}
